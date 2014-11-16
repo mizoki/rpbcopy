@@ -2,8 +2,12 @@
 
 [ -n "$SSH_CLIENT" ] && SESSION_TYPE="remote"
 
+cat > /tmp/rpbcopy
+
 if [[ $SESSION_TYPE == "remote" ]]; then
-  cat | nc -C 127.0.0.1 2224
+  cat /tmp/rpbcopy | nc -C 127.0.0.1 2224
 else
-  cat | pbcopy
+  cat /tmp/rpbcopy | pbcopy
 fi
+
+cat /tmp/rpbcopy
